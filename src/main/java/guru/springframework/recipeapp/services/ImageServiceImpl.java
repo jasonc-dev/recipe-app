@@ -30,7 +30,8 @@ public class ImageServiceImpl implements ImageService {
             recipe.setImage(byteObjects);
             recipeRepository.save(recipe);
         } catch (IOException e) {
-            log.debug("Error occurred");
+            //todo handle better
+            log.debug("Error occurred", e);
             e.printStackTrace();
         }
     }

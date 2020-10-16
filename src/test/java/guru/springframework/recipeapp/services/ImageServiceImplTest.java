@@ -36,10 +36,14 @@ public class ImageServiceImplTest {
         Recipe recipe = new Recipe();
         recipe.setId(id);
         Optional<Recipe> recipeOptional = Optional.of(recipe);
+
         when(repository.findById(anyLong())).thenReturn(recipeOptional);
+
         ArgumentCaptor<Recipe> argumentCaptor = ArgumentCaptor.forClass(Recipe.class);
+
         //when
         imageService.saveImageFile(id, multipartFile);
+
         //then
         verify(repository, times(1)).save(argumentCaptor.capture());
         Recipe savedRecipe = argumentCaptor.getValue();
